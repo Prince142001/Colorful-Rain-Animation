@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        i {
+            position: absolute;
+            height: 200px;
+            background: linear-gradient(transparent, #fff);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            animation: animate 5s linear infinite;
+        }
+
+        i:nth-child(3n+1) {
+            background: linear-gradient(transparent, #0ff);
+        }
+
+        i:nth-child(3n+2) {
+            background: linear-gradient(transparent, #0f0);
+        }
+
+        i:nth-child(3n+3) {
+            background: linear-gradient(transparent, #f00);
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(-200px);
+            }
+
+            100% {
+                transform: translateY(calc(100vh + 200px));
+            }
+        }
+    </style>
+
+    <title>🌈 Colorful Rain Animation | HTML, CSS, JavaScript Tutorial 🌧️</title>
+</head>
+
+<body>
+    <script>
+        function rain() {
+            const amount = 220;
+            const body = document.querySelector('body');
+
+            for (let i = 0; i < amount; i++) {
+                // console.log(amount);
+                const drop = document.createElement('i');
+                const size = 0.2 + Math.random() * 5;
+                const posX = Math.floor(Math.random() * window.innerWidth);
+                const delay = Math.random() * 20;
+                const duration = 1 + Math.random() * 5;
+
+                // Object.assign(drop.style, {
+                //     width: `${size}px`,
+                //     left: `${posX}px`,
+                //     animationDelay: `${delay}s`,
+                //     animationDuration: `${duration}s`
+                // });
+
+                // You can use this code, and it works the same as the one mentioned earlier.
+                drop.style.width = 0.2 + size + 'px';
+                drop.style.left = posX + 'px';
+                drop.style.animationDelay = delay + 's';
+                drop.style.animationDuration = 1 + duration + 's';
+
+                body.appendChild(drop);
+            }
+        }
+
+        rain();
+    </script>
+</body>
+
+</html>
